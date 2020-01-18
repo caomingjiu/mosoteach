@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Nav from '@/views/Nav.vue'
-import Index from '@/views/Index.vue'
 import Login from '@/views/Login.vue'
+import Registered from '@/views/Registered.vue'
+import ChooseRole from '@/views/ChooseRole.vue'
+
+import Index from '../views/index/Index.vue'
+import Join from '../views/index/Join.vue'
+import Create from '../views/index/Create.vue'
 
 Vue.use(VueRouter)
 
@@ -13,17 +18,44 @@ const routes = [
     component: Login
   },
   {
-    path: '/nav',
-    name: 'nav',
-    component:Nav,
-	children: [
-		{
-			path: 'index',
-			name: 'index',
-			component: Index,
-		},
-		]
-  }
+    path: '/registered',
+    name: 'registered',
+    component: Registered
+  },
+  {
+    path: '/chooserole',
+    name: 'chooserole',
+    component: ChooseRole
+  },
+  {
+  		path: '/nav',
+  		name: 'nav',
+  		component: Nav,
+  		children: [{
+  				path: '/',
+  				redirect: 'index'
+  			},
+  			{
+  				path: 'index',
+  				name: 'index',
+  				component:Index,
+  				children:[
+  					{
+  						path:'/',
+  						redirect:'join'
+  					},
+  					{
+  						path:'join',
+  						component: Join,
+  					},
+  					{
+  						path:'create',
+  						component:Create
+  					}
+  				]
+  			},
+  		]
+  	}
 ]
 
 const router = new VueRouter({

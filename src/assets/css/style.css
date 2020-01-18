@@ -1,26 +1,24 @@
 /* 公共规约:所有样式以bl开头
 按模块和主键划分 */
 @font-face {
-  font-family: 'iconfont';  /* project id 1432485 */
-  src: url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.eot');
-  src: url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1432485_5gmvszftwrv.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1615918 */
+  src: url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.eot');
+  src: url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1615918_ux110dkd9nl.svg#iconfont') format('svg');
 }
-.iconfont {
-	font-family: "iconfont" !important;
-	font-size: 16px;
-	font-style: normal;
-	-webkit-font-smoothing: antialiased;
-	-webkit-text-stroke-width: 0.2px;
-	-moz-osx-font-smoothing: grayscale;
-	cursor: pointer;
-}
-.icon{
-	width: 15px;
-	height: 15px;
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+	}
+.cc-licon{
+	width: 50px;
+	height: 50px;
 }
 
 /* 全局设定 */
@@ -70,6 +68,12 @@ img {
 	margin-right: 15px;
 }.cc-mbottom{
 	margin-bottom: 15px;
+}
+.cc-plleft{
+	padding-left: 30px;
+}
+.cc-pltop{
+	padding-top: 30px;
 }
 .cc-pleft{
 	padding-left: 15px;
