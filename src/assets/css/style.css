@@ -49,6 +49,9 @@ img {
 	text-decoration: none;
 	}
 /* 字体 */
+.cc-mlltop{
+	margin-top: 50px;
+}
 .cc-mlleft{
 	margin-left: 30px;
 }
@@ -63,6 +66,9 @@ img {
 }
 .cc-fmtop{
 	margin-top: -15px;
+}
+.cc-fmleft{
+	margin-left: -15px;
 }
 .cc-mright{
 	margin-right: 15px;

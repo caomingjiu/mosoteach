@@ -30,7 +30,7 @@
 						</div>
 						<p class="cc-pleft cc-pright cc-df-between">
 							<md-switch v-model="boolean" class="md-primary ">30 天自动登录</md-switch>
-							<router-link to="/ui-elements/typography"><span class="font-colour cc-mright">忘记密码？</span></router-link>
+							<router-link to="/forget"><span class="font-colour cc-mright">忘记密码？</span></router-link>
 						</p>
 							
 						<div class="cc-pleft cc-pright login">

@@ -4,6 +4,7 @@ import Nav from '@/views/Nav.vue'
 import Login from '@/views/Login.vue'
 import Registered from '@/views/Registered.vue'
 import ChooseRole from '@/views/ChooseRole.vue'
+import Forget from '@/views/Forget.vue'
 
 import Index from '../views/index/Index.vue'
 import Join from '../views/index/Join.vue'
@@ -23,7 +24,12 @@ const routes = [
     component: Registered
   },
   {
-    path: '/chooserole',
+    path: '/forget',
+    name: 'forget',
+    component: Forget
+  },
+  {
+    path: '/chooserole/:id',
     name: 'chooserole',
     component: ChooseRole
   },

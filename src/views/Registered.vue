@@ -13,7 +13,7 @@
 				<router-link to="/ui-elements/typography"><span class="cc-mleft" :class="{'font-colour':fontColoristrue1}" @mouseenter="fontColoristrue1=true" @mouseleave="fontColoristrue1=false">帮助</span></router-link>
 			</div>
 		</div>
-		<div class="body cc-col-center">
+		<div class="body cc-col-center cc-shadow">
 			<span class="md-title">注册蓝墨新账号</span>
 			<div class="card">
 				<p class="caveat address1" v-if="!mobileistrue||!phoneistrue">手机号输入错误！</p>
@@ -109,17 +109,16 @@
 				})
 					.then(res => {
 						this.wrong();
-						alert(this.mobileistrue)
 						if (res.data.msg == '成功'&&this.mobileistrue) {
 							
-							localStorage.setItem('user', JSON.stringify(res.data.data));
+							//localStorage.setItem('user', JSON.stringify(res.data.data));
 				            this.GLOBAL.user = res.data.data
 							// this.$router.push('nav/myIndex' );
 							this.$message({
 							          message: '恭喜你，注册成功',
 							          type: 'success'
 							        });
-							this.$router.push("/chooserole")
+							this.$router.push("/chooserole/"+this.phoneInput)
 						}
 						if (res.data.msg == '数据已存在') {
 							this.phoneistrue = false;
