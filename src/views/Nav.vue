@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="container-main">
 		<div class="header cc-shadow ">
 			<div class="header-content cc-df-between">
 				<div class="logo">
@@ -13,7 +13,7 @@
 				<div class="cc-df-between navigate-right">
 					<!-- 导航栏 -->
 					<div class=" cc-df-end navigate">
-						<ul class="navigate-sun" >
+						<ul class="navigate-sun">
 							<i class="iconfont">&#xe601;</i>
 							<li><router-link to="/">任务中心</router-link></li>
 							<div class=" vertical-bar"></div>
@@ -32,27 +32,58 @@
 						</ul>
 					</div>
 					<div class="cc-df cc-mleft cc-df-center">
-						<img class="cc-sm-avatar" src="../assets/image/avatar.png"alt=""/>
+						<img class="cc-sm-avatar" src="../assets/image/avatar.png" alt="" />
 						<li class="cc-mleft">姓名</li>
 						<li class="cc-mleft">退出</li>
 						<li class="cc-mleft">帮助</li>
 					</div>
-
 				</div>
 			</div>
 		</div>
-		<div><router-view class="" style="background-color: #C9C9D3;"/></div>
+		<div class="center-content"><router-view class="" /></div>
+
+		<div class="footer cc-center">
+			<div><span>©2012 - 2020 北京智启蓝墨信息技术有限公司 京ICP备12041916号-4</span></div>
+			<div class="">
+				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020877"><p style=" font-size: 12px; color: #333;">京公网安备 11010802020877号</p></a>
+			</div>
+			<div><span>地址：北京市海淀区上地东路 35 号颐泉汇写字楼 516 室联系电话：400-008-1078</span></div>
+		</div>
 	</div>
 </template>
 
-<script></script>
+<script>
+export default {
+	data() {
+		return {
+			
+		};
+	},
+	created: function() {
+		
+	},
+
+	methods: {}
+};
+</script>
 
 <style scoped>
-	button, input, select, textarea {
-	    font-family: inherit;
-	    font-size: inherit;
-	    line-height: inherit;
-	}
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+}
+.container-main {
+	/* 	width: 100%;
+	height: 2000px; */
+}
+.center-content {
+	width: 100%;
+	height: 500px;
+}
 .logo {
 	height: 100%;
 	width: 130px;
@@ -91,12 +122,10 @@
 	justify-content: space-around;
 }
 
-
 .vertical-bar {
-    width: 1px;
-    height: 14px;
-    background: #E1E1E1;
-   
+	width: 1px;
+	height: 14px;
+	background: #e1e1e1;
 }
 .cc-df-right {
 	list-style: none;
@@ -110,5 +139,12 @@ a {
 	text-decoration: none;
 	font: 20px;
 	color: #333;
+}
+.footer {
+	padding-top: 20px;
+	align-content: flex-end;
+	background-color: #ffffff;
+	margin-top: 50px;
+	height: 100px;
 }
 </style>
