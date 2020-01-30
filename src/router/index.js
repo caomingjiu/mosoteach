@@ -7,8 +7,10 @@ import ChooseRole from '@/views/ChooseRole.vue'
 import Forget from '@/views/Forget.vue'
 
 import Index from '../views/index/Index.vue'
-import Join from '../views/index/Join.vue'
-import Create from '../views/index/Create.vue'
+
+
+import ClassDetail from '../views/class/ClassDetail.vue'
+import Create from '../views/class/Create.vue'
 
 Vue.use(VueRouter)
 
@@ -45,21 +47,17 @@ const routes = [
   				path: 'index',
   				name: 'index',
   				component:Index,
-  				children:[
-  					{
-  						path:'/',
-  						redirect:'join'
-  					},
-  					{
-  						path:'join',
-  						component: Join,
-  					},
-  					{
-  						path:'create',
-  						component:Create
-  					}
-  				]
   			},
+			{
+				path: 'classdetail',
+				name: 'classdetail',
+				component:ClassDetail,
+			},
+			{
+				path: 'create',
+				name: 'create',
+				component:Create,
+			}
   		]
   	}
 ]

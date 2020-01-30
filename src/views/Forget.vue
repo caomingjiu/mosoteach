@@ -91,7 +91,6 @@ export default {
 	methods: {
 		sendmsg() {
 			let that = this;
-			alert(this.phoneInput)
 			this.axios({
 				method: 'post',
 				url: this.GLOBAL.baseUrl +'/user/sms', //后端api
@@ -105,7 +104,6 @@ export default {
 						'Access-Token': this.token //将token放在请求头带到后端
 					} */
 			}).then(res => {
-				alert(this.phoneInput)
 				console.log(res);
 			});
 			},

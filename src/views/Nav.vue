@@ -14,26 +14,26 @@
 					<!-- 导航栏 -->
 					<div class=" cc-df-end navigate">
 						<ul class="navigate-sun">
-							<i class="iconfont">&#xe601;</i>
-							<li><router-link to="/">任务中心</router-link></li>
+							<i class="iconfont font-colour" :class="{'font-colour1':coloristrue1}" @mouseenter="coloristrue1=false" @mouseleave="coloristrue1=true">&#xe601;</i>
+							<li><router-link to="/"><span class="font-colour" :class="{'font-colour1':coloristrue1}" @mouseenter="coloristrue1=false" @mouseleave="coloristrue1=true">任务中心</span></router-link></li>
 							<div class=" vertical-bar"></div>
-							<i class="iconfont">&#xe67f;</i>
-							<li><router-link to="/">教学包</router-link></li>
+							<i class="iconfont font-colour" :class="{'font-colour1':coloristrue2}" @mouseenter="coloristrue2=false" @mouseleave="coloristrue2=true">&#xe67f;</i>
+							<li><router-link to="/"><span class="font-colour" :class="{'font-colour1':coloristrue2}" @mouseenter="coloristrue2=false" @mouseleave="coloristrue2=true">教学包</span></router-link></li>
 							<div class=" vertical-bar"></div>
-							<i class="iconfont">&#xe641;</i>
-							<li><router-link to="/">库管理</router-link></li>
+							<i class="iconfont font-colour" :class="{'font-colour1':coloristrue3}" @mouseenter="coloristrue3=false" @mouseleave="coloristrue3=true">&#xe641;</i>
+							<li><router-link to="/"><span class="font-colour" :class="{'font-colour1':coloristrue3}" @mouseenter="coloristrue3=false" @mouseleave="coloristrue3=true">库管理</span></router-link></li>
 							<div class=" vertical-bar"></div>
-							<i class="iconfont">&#xe62d;</i>
-							<li><router-link to="/">我的题库</router-link></li>
+							<i class="iconfont font-colour" :class="{'font-colour1':coloristrue4}" @mouseenter="coloristrue4=false" @mouseleave="coloristrue4=true">&#xe62d;</i>
+							<li><router-link to="/"><span class="font-colour" :class="{'font-colour1':coloristrue4}" @mouseenter="coloristrue4=false" @mouseleave="coloristrue4=true">我的题库</span></router-link></li>
 							<div class=" vertical-bar"></div>
-							<i class="iconfont">&#xe60b;</i>
-							<li><router-link to="/">手机投屏</router-link></li>
+							<i class="iconfont font-colour" :class="{'font-colour1':coloristrue5}" @mouseenter="coloristrue5=false" @mouseleave="coloristrue5=true">&#xe60b;</i>
+							<li><router-link to="/"><span class="font-colour" :class="{'font-colour1':coloristrue5}" @mouseenter="coloristrue5=false" @mouseleave="coloristrue5=true">手机投屏</span></router-link></li>
 							<div class=" vertical-bar"></div>
 						</ul>
 					</div>
 					<div class="cc-df cc-mleft cc-df-center">
-						<img class="cc-sm-avatar" src="../assets/image/avatar.png" alt="" />
-						<li class="cc-mleft">姓名</li>
+						<img class="cc-sm-avatar" :src="user.avatar" alt="" />
+						<li class="cc-mleft">{{user.name}}</li>
 						<li class="cc-mleft">退出</li>
 						<li class="cc-mleft">帮助</li>
 					</div>
@@ -54,16 +54,22 @@
 
 <script>
 export default {
-	data() {
-		return {
-			
-		};
-	},
-	created: function() {
-		
-	},
+		data() {
+			return {
+				coloristrue1:true,
+				coloristrue2:true,
+				coloristrue3:true,
+				coloristrue4:true,
+				coloristrue5:true,
+				user: JSON.parse(localStorage.getItem('user'))
+			}
+		},
+		created() {
 
-	methods: {}
+		},
+		methods: {
+
+	}
 };
 </script>
 
@@ -76,10 +82,6 @@ textarea {
 	font-size: inherit;
 	line-height: inherit;
 }
-.container-main {
-	/* 	width: 100%;
-	height: 2000px; */
-}
 .center-content {
 	width: 100%;
 	height: 500px;
@@ -89,6 +91,12 @@ textarea {
 	width: 130px;
 	display: flex;
 	align-items: center;
+}
+.font-colour {
+	color: #13b1e5;
+}
+.font-colour1 {
+	color: black;
 }
 .header {
 	display: flex;

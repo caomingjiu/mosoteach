@@ -79,7 +79,6 @@
 
 <script>
 export default {
-	name: 'IconButtons',
 	data() {
 		return {
 			istrue: false,
@@ -212,10 +211,10 @@ export default {
 				}
 			})
 				.then(res => {
-					if (res.data.msg == '成功') {
-						localStorage.setItem('user', JSON.stringify(res.data.data));
+					console.log(res.data.data);
+					if (res.data.msg == '成功') { 
 		                this.GLOBAL.user = res.data.data
-						// this.$router.push('nav/myIndex' );
+						localStorage.setItem('user', JSON.stringify(res.data.data));
 						this.$message({
 						          message: '恭喜你，登录成功',
 						          type: 'success'
