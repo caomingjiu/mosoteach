@@ -11,6 +11,11 @@ import Index from '../views/index/Index.vue'
 
 import ClassDetail from '../views/class/ClassDetail.vue'
 import Create from '../views/class/Create.vue'
+import ClassDetails from '../views/class/ClassDetails.vue'
+import ClassActivity from '../views/class/ClassActivity.vue'
+import ClassMessage from '../views/class/ClassMessage.vue'
+import ClassResources from '../views/class/ClassResources.vue'
+import ClassClub from '../views/class/ClassClub.vue'
 
 Vue.use(VueRouter)
 
@@ -52,6 +57,37 @@ const routes = [
 				path: 'classdetail',
 				name: 'classdetail',
 				component:ClassDetail,
+				children: [
+					{
+							path: '/',
+							redirect: 'classactivity'
+						},
+				{
+					path: 'classdetails',
+					name: 'classdetails',
+					component:ClassDetails,
+				},
+				{
+					path: 'classactivity',
+					name: 'classactivity',
+					component:ClassActivity,
+				},
+				{
+					path: 'classmessage',
+					name: 'classmessage',
+					component:ClassMessage,
+				},
+				{
+					path: 'classresources',
+					name: 'classresources',
+					component:ClassResources,
+				},
+				{
+					path: 'classclub',
+					name: 'classclub',
+					component:ClassClub,
+				},
+				]
 			},
 			{
 				path: 'create',

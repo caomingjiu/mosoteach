@@ -32,7 +32,7 @@
 					<div class=" cc-df-between cc-mleft cc-mright margin-t">
 						<div>{{item.class_type}}</div>
 						<div class="cc-row">
-							<div>进入</div>
+							<div><router-link to="/nav/classdetail/">进入</router-link></div>
 							<i class="iconfont">&#xe637;</i>
 						</div>
 					</div>
@@ -61,7 +61,7 @@
 					<div class=" cc-df-between cc-mleft cc-mright margin-t">
 						<div>{{item.class_type}}</div>
 						<div class="cc-row">
-							<div>进入</div>
+							<div><router-link to="/nav/classdetail/">进入</router-link></div>
 							<i class="iconfont">&#xe637;</i>
 						</div>
 					</div>
@@ -76,7 +76,7 @@
 " alt="" />
 					<span class="md-title">还没有已创建的班课，快去创建一个吧～</span>
 					<span class="md-caption cc-mtop">创建班课后可以在班课内上传各种学习资源、创建多样化的教学活动等</span>
-				    <md-button class="md-raised login-btn " ><router-link to="/nav/create"><span class="font-colour">创建班课</span></router-link></md-button>
+				    <md-button class="md-raised login-btn " ><router-link :to="url"><span class="font-colour">创建班课</span></router-link></md-button>
 				</div>
 			</div>
 		</div>
@@ -92,7 +92,8 @@ export default {
 			user: JSON.parse(localStorage.getItem('user')),
 			classes:[],
 			joinistrue:true,
-			joinistrue1:true
+			joinistrue1:true,
+			url:'/nav/create'
 		};
 	},
 	created() {
