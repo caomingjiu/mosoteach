@@ -4,20 +4,20 @@
 " alt="登陆者头像" style="height: 110px;">
              <div class="cc-row head">
 				 <div class="head-img cc-shadow">
-					  <img src="../../assets/image/logo.png" alt="班课头像">
+					  <img :src="classd.thumbnail" alt="班课头像">
 				 </div>
 			   
 				<div class="cc-mleft cc-col address"> 
-				<span class="md-subheading">工业软件班</span>
-				<span class="md-caption address1">Web开发</span>
+				<span class="md-subheading">{{classd.name}}</span>
+				<span class="md-caption address1">{{classd.classType}}</span>
 				</div>
 			 </div>
 			 <div class="cc-row head-nav cc-shadow">
-				<div><router-link to="/nav/classdetail/classresources"><h3 class="cc-btn"  @click="navchoose1" :class="{'btn-bor':navistrue1}">资源(3)</h3></router-link></div>
-				<div  class="cc-mlleft"><router-link to="/nav/classdetail/classclub"><h3 class="cc-btn"  @click="navchoose2" :class="{'btn-bor':navistrue2}">成员(5)</h3></router-link></div>
-				<div  class="cc-mlleft"><router-link to="/nav/classdetail/classactivity"><h3 class="cc-btn"  @click="navchoose3" :class="{'btn-bor':navistrue3}">活动(2)</h3></router-link></div>
-				<div  class="cc-mlleft"><router-link to="/nav/classdetail/classmessage"><h3 class="cc-btn"  @click="navchoose4" :class="{'btn-bor':navistrue4}">消息(2)</h3></router-link></div>
-				<div  class="cc-mlleft"><router-link to="/nav/classdetail/classdetails"><h3 class="cc-btn"  @click="navchoose5" :class="{'btn-bor':navistrue5}">详情</h3></router-link></div>
+				<div><router-link :to="{path:'/nav/classdetail/classresources/'+classd.id}"><h3 class="cc-btn"  @click="navchoose1" :class="{'btn-bor':navistrue1}">资源(3)</h3></router-link></div>
+				<div  class="cc-mlleft"><router-link :to="{path:'/nav/classdetail/classclub/'+classd.id}"><h3 class="cc-btn"  @click="navchoose2" :class="{'btn-bor':navistrue2}">成员(5)</h3></router-link></div>
+				<div  class="cc-mlleft"><router-link :to="{path:'/nav/classdetail/classactivity/'+classd.id}"><h3 class="cc-btn"  @click="navchoose3" :class="{'btn-bor':navistrue3}">活动(2)</h3></router-link></div>
+				<div  class="cc-mlleft"><router-link :to="{path:'/nav/classdetail/classmessage/'+classd.id}"><h3 class="cc-btn"  @click="navchoose4" :class="{'btn-bor':navistrue4}">消息(2)</h3></router-link></div>
+				<div  class="cc-mlleft"><router-link :to="{path:'/nav/classdetail/classdetails/'+classd.id}"><h3 class="cc-btn"  @click="navchoose5" :class="{'btn-bor':navistrue5}">详情</h3></router-link></div>
 			 </div>
 			 		<router-view/>
 	</div>
@@ -31,11 +31,23 @@
 				navistrue2:false,
 				navistrue3:false,
 				navistrue4:false,
-				navistrue5:false
+				navistrue5:false,
+				classd:{}
 			};
 		},
 		created() {
-			
+			console.log(this.$route.params.id);
+			this.axios({
+					method:'get',
+					url:this.GLOBAL.baseUrl+ '/class/'+this.$route.params.id
+				})
+				.then(res =>{
+					this.classd = res.data.data;
+					console.log(this.classd)
+				})
+				.catch(function(error){
+					console.log(error)
+			});
 		},
 		methods: {
 		    navchoose1(){

@@ -19,27 +19,28 @@
 			</div>
 			<div><button class="cc-btn cc-btn-round cc-btn-min" style="background-color: white; border: 1px solid #000000; margin-top: 12px;">班课调序</button></div>
 		    </div>
-			
-			<div class="  cc-row" v-for="(item, index) in classes" :key="index" v-if="joinistrue&&user.profession=='学生'">
-				<div class="class-box cc-shadow">
-					<div class="box-top"><img src="../../assets/image/logo.png" /></div>
-				<div class="box-bottom">
-					<div class="cc-row">
-						<div class="box-avatar"><img class="cc-avatar" :src="item.avatar" /></div>
-						<div class="md-body-1 address2"> {{item.name2}}</div>
-					</div>
-					<div class="address3 ">{{item.name1}}</div>
-					<div class=" cc-df-between cc-mleft cc-mright margin-t">
-						<div>{{item.class_type}}</div>
-						<div class="cc-row">
-							<div><router-link to="/nav/classdetail/">进入</router-link></div>
-							<i class="iconfont">&#xe637;</i>
+			<div class="cc-df">
+				<div  v-for="(item, index) in classes" :key="index" v-if="joinistrue&&user.profession=='学生'">
+						<div class="class-box cc-shadow">
+							<div class="box-top"><img src="../../assets/image/logo.png" /></div>
+						<div class="box-bottom">
+							<div class="cc-row" v-for="(item1,index1) in item.userList" :key="index1">
+								<div class="box-avatar"><img class="cc-avatar" :src="item1.avatar" /></div>
+								<div class="md-body-1 address2"> {{item1.name}}</div>
+							</div>
+							<div class="address3 ">{{item.name1}}</div>
+							<div class=" cc-df-between cc-mleft cc-mright margin-t">
+								<div>{{item.class_type}}</div>
+								<div class="cc-row">
+									<div ><router-link  :to="{ path: '/nav/classdetail/classactivity/' + item.id }">进入</router-link></div>
+									<i class="iconfont">&#xe637;</i>
+								</div>
+							</div>
 						</div>
-					</div>
+						</div>	
 				</div>
-				</div>
-				
 			</div>
+			
 			
 			<div v-if="!joinistrue&&user.profession=='学生'">
 				<div class="nothing-content  cc-col-center">
@@ -48,27 +49,28 @@
 					<span class="md-title">还没有创建的班课</span>
 				</div>
 			</div>
-			
-			<div class="  cc-row" v-for="(item, index) in classes" :key="index" v-if="joinistrue&&user.profession=='老师'">
-				<div class="class-box cc-shadow">
-					<div class="box-top"><img src="../../assets/image/logo.png" /></div>
-				<div class="box-bottom">
-					<div class="cc-row">
-						<div class="box-avatar"><img class="cc-avatar" :src="item.avatar" /></div>
-						<div class="md-body-1 address2"> {{item.name2}}</div>
-					</div>
-					<div class="address3 ">{{item.name1}}</div>
-					<div class=" cc-df-between cc-mleft cc-mright margin-t">
-						<div>{{item.class_type}}</div>
-						<div class="cc-row">
-							<div><router-link to="/nav/classdetail/">进入</router-link></div>
-							<i class="iconfont">&#xe637;</i>
+			<div class="cc-df">
+					<div  v-for="(item, index) in classes" :key="index" v-if="joinistrue&&user.profession=='老师'">
+					<div class="class-box cc-shadow">
+						<div class="box-top"><img src="../../assets/image/logo.png" /></div>
+					<div class="box-bottom">
+						<div class="cc-row" v-for="(item1,index1) in item.userList" :key="index1">
+							<div class="box-avatar"><img class="cc-avatar" :src="item1.avatar" /></div>
+							<div class="md-body-1 address2"> {{item1.name}}</div>
+						</div>
+						<div class="address3 ">{{item.name1}}</div>
+						<div class=" cc-df-between cc-mleft cc-mright margin-t">
+							<div>{{item.class_type}}</div>
+							<div class="cc-row">
+								<!-- <div ><router-link  :to="{ path: '/nav/classdetail/' + item.id }">进入</router-link></div> -->
+								<i class="iconfont">&#xe637;</i>
+							</div>
 						</div>
 					</div>
-				</div>
-				</div>
-				
+					</div>	
 			</div>
+			</div>
+		
 			
 			<div v-if="!joinistrue&&user.profession=='老师'">
 				<div class="nothing-content  cc-col-center">
@@ -91,6 +93,7 @@ export default {
 		return {
 			user: JSON.parse(localStorage.getItem('user')),
 			classes:[],
+			create:[],
 			joinistrue:true,
 			joinistrue1:true,
 			url:'/nav/create'
@@ -115,7 +118,7 @@ export default {
 		},
 		joinchoose(){
 			this.joinistrue=true
-		}
+		},
 	}
 };	
 </script>

@@ -32,23 +32,24 @@
 						</ul>
 					</div>
 					<div class="cc-df cc-mleft cc-df-center">
+						<router-link to="/nav/user/">
 						<img class="cc-sm-avatar" :src="user.avatar" alt="" />
+						</router-link>
+						<router-link to="/nav/user/">
 						<li class="cc-mleft">{{user.name}}</li>
+						</router-link>
+						
 						<li class="cc-mleft">退出</li>
 						<li class="cc-mleft">帮助</li>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="center-content"><router-view class="" /></div>
-
-		<div class="footer cc-center">
-			<div><span>©2012 - 2020 北京智启蓝墨信息技术有限公司 京ICP备12041916号-4</span></div>
-			<div class="">
-				<a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802020877"><p style=" font-size: 12px; color: #333;">京公网安备 11010802020877号</p></a>
-			</div>
-			<div><span>地址：北京市海淀区上地东路 35 号颐泉汇写字楼 516 室联系电话：400-008-1078</span></div>
+		<router-view class="" />
+        <div class="footer">
+			
 		</div>
+
 	</div>
 </template>
 
@@ -149,9 +150,7 @@ a {
 	color: #333;
 }
 .footer {
-	padding-top: 20px;
-	align-content: flex-end;
-	background-color: #ffffff;
+	background-color: rgb(250, 250, 250);
 	margin-top: 50px;
 	height: 100px;
 }

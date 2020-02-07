@@ -2,12 +2,12 @@
 按模块和主键划分 */
 @font-face {
   font-family: 'iconfont';  /* project id 1615918 */
-  src: url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.eot');
-  src: url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1615918_w7fvb83ysjp.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1615918_592h77b5qfv.eot');
+  src: url('//at.alicdn.com/t/font_1615918_592h77b5qfv.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1615918_592h77b5qfv.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1615918_592h77b5qfv.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1615918_592h77b5qfv.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1615918_592h77b5qfv.svg#iconfont') format('svg');
 }
 .iconfont{
     font-family:"iconfont" !important;
