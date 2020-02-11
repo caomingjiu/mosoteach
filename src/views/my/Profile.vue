@@ -15,7 +15,7 @@
 		<div class="horizontal-line "></div>
 		<div class="information-content cc-df">
 			<div class="information-left cc-col-center">
-				<div class="picture-box"><img :src="user.avatar" alt="" class="show-image"  /></div>
+				<div class="picture-box"><img :src="user.avatar" alt="" class="show-image" /></div>
 				<button type="button" class="button-routine" name="button" style="display: block;" v-if="!CompileBoolean" @click="avatarClick()">设置头像</button>
 			</div>
 			<div class="information-right">
@@ -30,10 +30,18 @@
 					<div class="info-item">
 						<label class="info-label">姓名</label>
 
-						<div class="state-show" v-if="CompileBoolean">{{ user.name }}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewName }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
-							<el-input class="user-name form-item" type="text" v-model="NewName" name="name" :value="user.name" placeholder="请输入你的姓名" maxlength="20"></el-input>
+							<el-input
+								class="user-name form-item"
+								type="text"
+								v-model="NewName"
+								name="name"
+								:value="user.name"
+								placeholder="请输入你的姓名"
+								maxlength="20"
+							></el-input>
 						</div>
 					</div>
 
@@ -41,10 +49,20 @@
 					<div class="info-item info-item-nickname">
 						<div class="info-label">昵称</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.nickname}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewNickname }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
-							<div class="info-con"><el-input class="user-nick form-item" v-model="NewNickname" type="text" name="nick_name" :value="this.userDetails.nickname" placeholder="请输入昵称" maxlength="20"></el-input></div>
+							<div class="info-con">
+								<el-input
+									class="user-nick form-item"
+									v-model="NewNickname"
+									type="text"
+									name="nick_name"
+									:value="this.userDetails.nickname"
+									placeholder="请输入昵称"
+									maxlength="20"
+								></el-input>
+							</div>
 						</div>
 					</div>
 
@@ -53,14 +71,18 @@
 					<!-- 性别 -->
 					<div class="info-item info-item-sex">
 						<div class="info-label">性别</div>
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.gender}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewGender }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
 							<label class="bui-radios-label bui-radios-anim">
-							    <input type="radio" name="sex"/><i class="bui-radios"></i> 男
+								<input type="radio" checked="" value="男" name="sex" />
+								<i class="bui-radios"></i>
+								男
 							</label>
 							<label class="bui-radios-label bui-radios-anim">
-							    <input type="radio" checked="" name="sex"/><i class="bui-radios"></i> 女
+								<input type="radio" value="女" name="sex" />
+								<i class="bui-radios"></i>
+								女
 							</label>
 						</div>
 					</div>
@@ -69,26 +91,40 @@
 					<div class="info-item">
 						<div class="info-label">出生年份</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.birthday}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewBirthday }}</div>
 						<div class="state-edit" v-if="!CompileBoolean">
-							<el-input class="birthday form-item" v-model="NewBirthday" type="text" name="birthday" :value="this.userDetails.birthday" placeholder="请输入你的出生年份，如“1991”" maxlength="4"></el-input>
+							<el-input
+								class="birthday form-item"
+								v-model="NewBirthday"
+								type="text"
+								name="birthday"
+								:value="this.userDetails.birthday"
+								placeholder="请输入你的出生年份，如“1991”"
+								maxlength="4"
+							></el-input>
 						</div>
 					</div>
 
 					<!-- 身份 -->
-					<div class="info-item info-item-usertype">	
+					<div class="info-item info-item-usertype">
 						<div class="info-label">身份</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.profession}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewProfession }}</div>
 						<div class="state-edit" v-if="!CompileBoolean">
 							<label class="bui-radios-label bui-radios-anim">
-							    <input type="radio" checked="NewProfession" name="sex2"/><i class="bui-radios"></i> 老师
+								<input type="radio" checked="NewProfession" value="老师" name="job" />
+								<i class="bui-radios"></i>
+								老师
 							</label>
 							<label class="bui-radios-label bui-radios-anim">
-							    <input type="radio" name="sex2"/><i class="bui-radios"></i>学生
+								<input type="radio" value="学生" name="job" />
+								<i class="bui-radios"></i>
+								学生
 							</label>
 							<label class="bui-radios-label bui-radios-anim">
-							    <input type="radio" name="sex2"/><i class="bui-radios"></i>其他
+								<input type="radio" value="其他" name="job" />
+								<i class="bui-radios"></i>
+								其他
 							</label>
 						</div>
 					</div>
@@ -97,10 +133,18 @@
 					<div class="info-item">
 						<div class="info-label">工号/学号</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.jobNumber}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewJobNumber }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
-							<el-input class="student-no form-item" maxlength="20" v-model="NewJobNumber" type="text" name="number" :value="this.userDetails.jobNumber" placeholder="请输入你的学号/工号" ></el-input>
+							<el-input
+								class="student-no form-item"
+								maxlength="20"
+								v-model="NewJobNumber"
+								type="text"
+								name="number"
+								:value="this.userDetails.jobNumber"
+								placeholder="请输入你的学号/工号"
+							></el-input>
 						</div>
 					</div>
 
@@ -108,11 +152,18 @@
 					<div class="info-item info-item-school">
 						<div class="info-label">所在的学校</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.school}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewSchool }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
 							<div class="select-school-info">
-								<el-input type="text"  class="department-name form-item" v-model="NewSchool" name="department_name" :value="this.userDetails.school" placeholder="请输入或选择院系"></el-input>
+								<el-input
+									type="text"
+									class="department-name form-item"
+									v-model="NewSchool"
+									name="department_name"
+									:value="this.userDetails.school"
+									placeholder="请输入或选择院系"
+								></el-input>
 							</div>
 						</div>
 					</div>
@@ -121,11 +172,18 @@
 					<div class="info-item">
 						<div class="info-label">所在的院系</div>
 
-						<div class="state-show" v-if="CompileBoolean">{{this.userDetails.faculty}}</div>
+						<div class="state-show" v-if="CompileBoolean">{{ this.NewFaculty }}</div>
 
 						<div class="state-edit" v-if="!CompileBoolean">
 							<div class="select-school-info">
-								<el-input type="text" class="department-name form-item" v-model="NewFaculty" name="department_name" :value="this.userDetails.faculty" placeholder="请输入或选择院系"></el-input>
+								<el-input
+									type="text"
+									class="department-name form-item"
+									v-model="NewFaculty"
+									name="department_name"
+									:value="this.userDetails.faculty"
+									placeholder="请输入或选择院系"
+								></el-input>
 							</div>
 						</div>
 					</div>
@@ -141,42 +199,42 @@ export default {
 		return {
 			user: JSON.parse(localStorage.getItem('user')),
 			id: JSON.parse(localStorage.getItem('user')).id,
+			mobile:JSON.parse(localStorage.getItem('user')).mobile,
 			userDetails: [],
 			CompileBoolean: true,
 			url: '/nav/create',
-			NewName:'',
-			NewNickname:'',
-			NewGender:'',
-			NewBirthday:'',
-			NewProfession:'',
-			NewJobNumber:'',
-			NewSchool:'',
-			NewFaculty:''
-
+			NewName: '',
+			NewNickname: '',
+			NewGender: '',
+			NewBirthday: '',
+			NewProfession: '',
+			NewJobNumber: '',
+			NewSchool: '',
+			NewFaculty: ''
 		};
 	},
 	created() {
 		user: JSON.parse(localStorage.getItem('user')),
-		console.log('用户信息'+this.user)
+		console.log('用户信息' + this.user);
 		console.log(this.user.mobile);
 		this.axios({
 			method: 'post',
 			url: this.GLOBAL.baseUrl + '/userMaster/mobile/',
 			data: {
-				mobile: this.user.mobile,
+				mobile: this.user.mobile
 			}
 		})
 			.then(res => {
 				this.userDetails = res.data.data;
-				console.log('用户详细信息'+this.userDetails);
-				this.NewName=this.userDetails.name;
-				this.NewNickname=this.userDetails.nickname;
-				this.NewGender=this.userDetails.gender;
-				this.NewBirthday=this.userDetails.birthday;
-				this.NewProfession=this.userDetails.profession;
-				this.NewJobNumber=this.userDetails.jobNumber;
-				this.NewSchool=this.userDetails.school;
-				this.NewFaculty=this.userDetails.faculty;
+				console.log('用户详细信息' + this.userDetails);
+				this.NewName = this.userDetails.name;
+				this.NewNickname = this.userDetails.nickname;
+				this.NewGender = this.userDetails.gender;
+				this.NewBirthday = this.userDetails.birthday;
+				this.NewProfession = this.userDetails.profession;
+				this.NewJobNumber = this.userDetails.jobNumber;
+				this.NewSchool = this.userDetails.school;
+				this.NewFaculty = this.userDetails.faculty;
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -190,27 +248,50 @@ export default {
 				this.CompileBoolean = false;
 			}
 		},
+
 		Cancel() {
 			this.CompileBoolean = true;
 		},
+
 		finishComile() {
-			alert(this.NewName)
+			var sex = null;
+			var obj = document.getElementsByName('sex');
+			for (var i = 0; i < obj.length; i++) {
+				//遍历Radio
+				if (obj[i].checked) {
+					sex = obj[i].value;
+				}
+			}
+			var job = null;
+			var obj = document.getElementsByName('job');
+			for (var i = 0; i < obj.length; i++) {
+				//遍历Radio
+				if (obj[i].checked) {
+					job = obj[i].value;
+				}
+			}
+			// alert(this.mobile)
+			// alert(sex);
+			// alert(job);
 			this.axios({
 				method: 'put',
 				url: this.GLOBAL.baseUrl + '/userMaster/update',
 				data: {
-					Name:this.NewName,
-					Nickname:this.NewNickname,
-					Gender:this.NewGender,
-					Birthday:this.NewBirthday,
-					Profession:this.NewProfession,
-					JobNumber:this.NewJobNumber,
-					School:this.NewSchool,
-					Faculty:this.NewFaculty
-				}
+					mobile:this.mobile,
+					name: this.NewName,
+					nickname: this.NewNickname,
+					gender: sex,
+					birthday: this.NewBirthday,
+					profession: job,
+					jobNumber: this.NewJobNumber,
+					school: this.NewSchool,
+					faculty: this.NewFaculty
+				},
 			})
 				.then(res => {
-					alert('修改成功')
+					alert('修改成功');
+					this.NewGender = sex;
+					this.NewProfession =job;
 				})
 				.catch(function(error) {
 					console.log(error);
@@ -359,52 +440,51 @@ export default {
 	border-radius: 4px;
 }
 
-
 /* radio */
 label.bui-radios-label input {
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
+	position: absolute;
+	opacity: 0;
+	visibility: hidden;
 }
- 
+
 label.bui-radios-label .bui-radios {
-  display: inline-block;
-  position: relative;
-  width: 13px;
-  height: 13px;
-  background: #FFFFFF;
-  border: 1px solid #979797;
-  border-radius: 50%;
-  vertical-align: -2px;
+	display: inline-block;
+	position: relative;
+	width: 13px;
+	height: 13px;
+	background: #ffffff;
+	border: 1px solid #979797;
+	border-radius: 50%;
+	vertical-align: -2px;
 }
- 
+
 label.bui-radios-label input:checked + .bui-radios:after {
-  position: absolute;
-  content: "";
-  width: 7px;
-  height: 7px;
-  background-color: #fff;
-  border-radius: 50%;
-  top: 3px;
-  left: 3px;
+	position: absolute;
+	content: '';
+	width: 7px;
+	height: 7px;
+	background-color: #fff;
+	border-radius: 50%;
+	top: 3px;
+	left: 3px;
 }
- 
+
 label.bui-radios-label input:checked + .bui-radios {
-  background: #00B066;
-  border: 1px solid #00B066;
+	background: #00b066;
+	border: 1px solid #00b066;
 }
- 
+
 label.bui-radios-label input:disabled + .bui-radios {
-  background-color: #e8e8e8;
-  border: solid 1px #979797;
+	background-color: #e8e8e8;
+	border: solid 1px #979797;
 }
- 
+
 label.bui-radios-label input:disabled:checked + .bui-radios:after {
-  background-color: #c1c1c1;
+	background-color: #c1c1c1;
 }
- 
+
 label.bui-radios-label.bui-radios-anim .bui-radios {
-  -webkit-transition: background-color ease-out .3s;
-  transition: background-color ease-out .3s;
+	-webkit-transition: background-color ease-out 0.3s;
+	transition: background-color ease-out 0.3s;
 }
 </style>

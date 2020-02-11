@@ -11,14 +11,20 @@
 				<div class="header-right "><i class="iconfont">&#xe60b;</i></div>
 			</div>
 		</div>
-		<div class="cc-coll-12 container">
+		<div class="cc-coll-12 container" >
 			<img src="https://niit-student.oss-cn-beijing.aliyuncs.com/cloud/81710452-d36c-4fd7-a9c3-f3490027b377.png" alt="登录背景" class="login-background" />
 			<div class="cc-row">
 				<img src="https://niit-student.oss-cn-beijing.aliyuncs.com/cloud/9c584d55-0ae8-4b0e-8b35-272bef811edc.png" alt="云班课语言" class="login-front" />
 				<div class="login-card">
-					<div class="login-card-header">
-						<button class="cc-btn loginbtn" @click="loginIstrue=!loginIstrue" :class="{'change-loginbtn':loginIstrue}"><span class="md-body-2">账号密码登录</span></button>
-						<button class="cc-btn loginbtn cc-mlleft" @click="loginIstrue=!loginIstrue" :class="{'change-loginbtn':!loginIstrue}"><span class="md-body-2">短信验证码登录</span></button>
+					<div class="login-card-header  cc-df" >
+						<div v-for="(item,index) in authoritys" :key="index" v-if="item.id==1">
+							<button class="cc-btn loginbtn" @click="loginIstrue=!loginIstrue" :class="{'change-loginbtn':loginIstrue}" ><span class="md-body-2">{{item.name}}</span></button>
+						</div>
+						<div v-for="(item,index) in authoritys" :key="index" v-if="item.id==2">
+							<button class="cc-btn loginbtn cc-mlleft" @click="loginIstrue=!loginIstrue" :class="{'change-loginbtn':!loginIstrue}" ><span class="md-body-2">{{item.name}}</span></button>
+						</div>
+						
+						
 					</div>
 					<div class="login-card-body cc-pltop" v-if="loginIstrue">
 						<div>
@@ -28,18 +34,27 @@
 							<el-input placeholder="请输入密码" v-model="passwordInput" class="login-input" show-password></el-input>
 						
 						</div>
-						<p class="cc-pleft cc-pright cc-df-between">
-							<md-switch v-model="boolean" class="md-primary ">30 天自动登录</md-switch>
-							<router-link to="/forget"><span class="font-colour cc-mright">忘记密码？</span></router-link>
-						</p>
+						<div class="cc-pleft cc-pright cc-df-between cc-df">
+							<div>
+								<md-switch v-model="boolean" class="md-primary ">30 天自动登录</md-switch>
+							</div>
 							
-						<div class="cc-pleft cc-pright login">
-							<md-button class="md-raised login-btn " @click="signin"><span class="font-colour">登录</span></md-button>
+							<div v-for="(item,index) in authoritys" :key="index" v-if="item.id==3">
+								<router-link :to="item.router_url"><span class="font-colour ">{{item.name}}</span></router-link>
+							</div>
 						</div>
-						<div class="cc-df cc-mtop">
-							<router-link to="/registered"><span class="font-colour login-signin">注册蓝墨云账号</span></router-link>
+							
+						<div class="cc-pleft cc-pright login" v-for="(item,index) in authoritys" :key="index" v-if="item.id==4">
+							<md-button class="md-raised login-btn " @click="signin"><span class="font-colour">{{item.name}}</span></md-button>
+						</div>
+						<div class="cc-df cc-mtop" >
+							<div>
+								<router-link to="/registered"><span class="font-colour login-signin">注册蓝墨云账号</span></router-link>
+							</div>
 							<span class="font-colour cc-mleft">|</span>
-							<router-link to="/ui-elements/typography"><span class="font-colour cc-mleft">学校账号密码登录</span></router-link>
+							<div>
+								<router-link to="/ui-elements/typography"><span class="font-colour cc-mleft">学校账号密码登录</span></router-link>
+							</div>		
 						</div>
 					</div>
 					<div class="login-card-body cc-pltop" v-if="!loginIstrue">
@@ -58,10 +73,15 @@
 							    <el-button class="dis-btn" v-if="codeIstrue" disabled>获取验证码</el-button>
 							    <el-button class="ok-btn" v-if="!codeIstrue" @click="getCode"><span class="font-colour">{{msg}}</span></el-button>
 							</div>
-							<p class="cc-pleft  cc-df-between">
-								<md-switch v-model="boolean" class="md-primary ">30 天自动登录</md-switch>
-								<router-link to="/ui-elements/typography"><span class="font-colour cc-mright">忘记密码？</span></router-link>
-							</p>
+							<div class="cc-pleft cc-pright cc-df-between cc-df">
+								<div>
+									<md-switch v-model="boolean" class="md-primary ">30 天自动登录</md-switch>
+								</div>
+								
+								<div class="" v-for="(item,index) in authoritys" :key="index" v-if="item.id==3">
+									<router-link :to="item.router_url"><span class="font-colour ">{{item.name}}</span></router-link>
+								</div>
+							</div>
 						<div class="cc-pleft cc-pright cc-mtop">
 							<md-button class="md-raised login-btn " @click="smslogin"><span class="font-colour">登录</span></md-button>
 						</div>
@@ -104,8 +124,18 @@ export default {
 			timer:null,
 			countdown:10,
 			phoneistrue:false,
-			codeistrue:false
+			codeistrue:false,
+			authoritys:[]
 		};
+	},
+	created() {
+		this.axios({
+			method: 'get',
+			url: this.GLOBAL.baseUrl +'/permission/0'//后端api
+		}).then(res => {
+			console.log(res.data.data);
+			this.authoritys=res.data.data
+		});
 	},
 	methods: {
 		sendmsg() {

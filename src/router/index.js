@@ -5,6 +5,7 @@ import Login from '@/views/Login.vue'
 import Registered from '@/views/Registered.vue'
 import ChooseRole from '@/views/ChooseRole.vue'
 import Forget from '@/views/Forget.vue'
+import Text from '@/views/Text.vue'
 
 import Index from '../views/index/Index.vue'
 
@@ -32,6 +33,11 @@ const routes = [{
 		path: '/registered',
 		name: 'registered',
 		component: Registered
+	},
+	{
+		path: '/text',
+		name: 'text',
+		component: Text
 	},
 	{
 		path: '/forget',
